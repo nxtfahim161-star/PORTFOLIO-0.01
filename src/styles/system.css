@@ -1,0 +1,89 @@
+/* LOGO */
+.logo { display: inline-flex; align-items: center; gap: 0.7em; font-size: 1rem; }
+.logo .mark { width: 2.3em; height: 2.3em; flex: none; }
+.logo-text { display: flex; flex-direction: column; line-height: 1; }
+.logo-text b { font-weight: 800; letter-spacing: 0.16em; font-size: 1.02em; }
+.logo-text small { font-weight: 600; font-size: 0.62em; letter-spacing: 0.08em; margin-top: 0.6em; opacity: 0.7; }
+.logo.stack { flex-direction: column; gap: 1rem; text-align: center; }
+.logo.stack .logo-text { align-items: center; }
+.logo.stack .mark { width: 3.6em; height: 3.6em; }
+.tone-color { color: var(--ink); }
+.tone-onDark, .tone-white { color: #fff; }
+.tone-black { color: #111; }
+
+/* SYSTEM GRID */
+.sys-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 3rem; }
+.tile { border-radius: 24px; padding: clamp(18px, 2.4vw, 32px); position: relative; overflow: hidden; display: grid; place-items: center; min-height: 220px; }
+.tile .cap { position: absolute; left: 20px; bottom: 14px; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; opacity: 0.7; z-index: 2; }
+.t-primary { grid-column: span 7; background: #fff; font-size: clamp(1rem, 2.2vw, 1.5rem); }
+.t-second { grid-column: span 5; background: #fff; border: 1px solid rgba(34, 5, 113, 0.1); font-size: clamp(0.95rem, 1.6vw, 1.15rem); }
+.t-symbol { grid-column: span 4; background: var(--grad); color: #fff; min-height: 320px; }
+.t-symbol .mark { width: 58%; height: auto; }
+.t-grid { grid-column: span 4; background: var(--plum); color: #fff; min-height: 320px; }
+.t-grid svg { width: 78%; height: auto; }
+.t-mono { grid-column: span 4; display: grid; grid-template-rows: 1fr 1fr; gap: 16px; padding: 0; min-height: 320px; background: none; overflow: visible; }
+.t-mono .tile { min-height: 150px; }
+.t-pattern { grid-column: span 12; min-height: 150px; padding: 0; }
+.t-pattern .pattern { position: absolute; inset: 0; }
+@media (max-width: 900px) {
+  .t-primary, .t-second { grid-column: span 12; }
+  .t-symbol, .t-grid, .t-mono { grid-column: span 6; }
+}
+@media (max-width: 620px) {
+  .sys-grid > * { grid-column: span 12 !important; }
+}
+
+/* STAGE (logo on backgrounds) */
+.stage-wrap { margin-top: 3.5rem; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.tab { padding: 0.6em 1.3em; min-height: 44px; border-radius: 999px; border: 1.5px solid rgba(34, 5, 113, 0.25); font-weight: 700; font-size: 0.85rem; transition: all 0.3s; }
+.tab:hover { border-color: var(--plum); }
+.tab[aria-pressed='true'] { background: var(--plum); color: #fff; border-color: var(--plum); }
+.stage { border-radius: 28px; min-height: clamp(220px, 34vw, 380px); display: grid; place-items: center; transition: background 0.6s var(--ease); }
+.stage .logo { font-size: clamp(1.1rem, 3.8vw, 2.6rem); animation: swap 0.6s var(--ease); }
+@keyframes swap { from { opacity: 0; transform: scale(0.94) translateY(8px); } }
+.stage[data-bg='light'] { background: #fff; }
+.stage[data-bg='dark'] { background: var(--plum); }
+.stage[data-bg='brand'] { background: var(--grad); }
+.stage[data-bg='mono'] { background: #e9e6ee; }
+
+/* COLORS */
+.ratio { display: flex; height: clamp(56px, 9vw, 96px); border-radius: 20px; overflow: hidden; margin-top: 3rem; }
+.ratio i { display: block; }
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+.sw { border-radius: 24px; padding: 20px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; border: 1px solid rgba(34, 5, 113, 0.1); transition: transform 0.4s var(--ease), box-shadow 0.4s; }
+.sw:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -24px rgba(34, 5, 113, 0.5); }
+.sw b { font-size: 1.1rem; display: block; }
+.sw small { font-size: 0.78rem; opacity: 0.8; }
+.sw .hex { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+.sw .hex span { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+.pairs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 2.5rem; }
+.pair { border-radius: 18px; padding: 18px; display: flex; justify-content: space-between; align-items: flex-end; min-height: 120px; }
+.pair .aa { font-size: 2.6rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.pair small { font-weight: 700; font-size: 0.72rem; letter-spacing: 0.06em; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) { .swatches { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .sw { min-height: 190px; padding: 16px; } }
+
+/* TYPOGRAPHY */
+.type-hero { font-size: clamp(6rem, 26vw, 20rem); font-weight: 800; line-height: 0.8; letter-spacing: -0.06em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; margin-top: 2rem; }
+.card { background: #fff; border-radius: 24px; padding: clamp(20px, 3vw, 36px); border: 1px solid rgba(34, 5, 113, 0.08); }
+.card.dk { background: var(--plum); color: #fff; border: 0; }
+.type-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 2.5rem; }
+.ty-weights { grid-column: span 7; }
+.ty-hier { grid-column: span 5; }
+.ty-num { grid-column: span 5; }
+.ty-track { grid-column: span 7; }
+.card .label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.6; margin-bottom: 1rem; display: block; }
+.wrow { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(34, 5, 113, 0.1); font-size: clamp(1.6rem, 4vw, 2.8rem); letter-spacing: -0.03em; line-height: 1.1; }
+.wrow small { font-size: 0.72rem; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700; flex: none; }
+.hier h4 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.03em; line-height: 1.05; margin: 0.6rem 0; }
+.hier p { opacity: 0.8; }
+.hier .cap { font-size: 0.78rem; opacity: 0.6; margin-top: 0.8rem; display: block; }
+.nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-variant-numeric: tabular-nums; }
+.nums div { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.nums small { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; opacity: 0.7; margin-top: 0.4rem; text-transform: uppercase; }
+.track p { font-size: clamp(1.1rem, 2.4vw, 1.7rem); font-weight: 700; padding: 0.4rem 0; border-bottom: 1px solid rgba(34, 5, 113, 0.1); display: flex; justify-content: space-between; gap: 1rem; }
+.track p small { font-size: 0.7rem; opacity: 0.55; letter-spacing: 0.1em; font-weight: 700; }
+@media (max-width: 900px) {
+  .ty-weights, .ty-hier, .ty-num, .ty-track { grid-column: span 12; }
+                        }
